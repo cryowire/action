@@ -1,4 +1,4 @@
-"""Entry point for the cryo-wiring GitHub Action."""
+"""Entry point for the cryowire GitHub Action."""
 
 from __future__ import annotations
 
@@ -74,17 +74,17 @@ def main() -> int:
         for cmd_name in commands:
             if cmd_name == "validate":
                 ok = run_command(
-                    ["cryo-wiring", "validate", str(cd_dir)],
+                    ["cryowire", "validate", str(cd_dir)],
                     f"Validate {cd_dir}",
                 )
             elif cmd_name == "build":
                 ok = run_command(
-                    ["cryo-wiring", "build", str(cd_dir)],
+                    ["cryowire", "build", str(cd_dir)],
                     f"Build {cd_dir}",
                 )
             elif cmd_name == "diagram":
                 ok = run_command(
-                    ["cryo-wiring", "diagram", str(cd_dir), "-o", diagram_output],
+                    ["cryowire", "diagram", str(cd_dir), "-o", diagram_output],
                     f"Diagram {cd_dir}",
                 )
             else:

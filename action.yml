@@ -1,5 +1,5 @@
-name: "Cryo-Wiring CI"
-description: "Validate, build, and generate diagrams for cryo-wiring configurations"
+name: "Cryowire CI"
+description: "Validate, build, and generate diagrams for cryowire configurations"
 branding:
   icon: "check-circle"
   color: "blue"
@@ -18,7 +18,7 @@ inputs:
     required: false
     default: "wiring.svg"
   cli-version:
-    description: "cryo-wiring-cli version constraint (e.g. '>=0.1.0')"
+    description: "cryowire-cli version constraint (e.g. '>=0.1.0')"
     required: false
     default: ""
   python-version:
@@ -42,17 +42,17 @@ runs:
       with:
         python-version: ${{ inputs.python-version }}
 
-    - name: Install cryo-wiring-cli
+    - name: Install cryowire-cli
       shell: bash
       run: |
         pip install --quiet --upgrade pip
         if [ -n "${{ inputs.cli-version }}" ]; then
-          pip install --quiet "cryo-wiring-cli${{ inputs.cli-version }}"
+          pip install --quiet "cryowire-cli${{ inputs.cli-version }}"
         else
-          pip install --quiet cryo-wiring-cli
+          pip install --quiet cryowire-cli
         fi
 
-    - name: Run cryo-wiring
+    - name: Run cryowire
       id: run
       shell: bash
       env:

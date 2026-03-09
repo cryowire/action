@@ -1,6 +1,12 @@
-# cryo-wiring/action
+<a href="https://github.com/cryowire">
+  <img src="https://raw.githubusercontent.com/cryowire/artwork/main/logo-type/logotype.png" alt="cryowire" width="400" />
+</a>
 
-GitHub Action for validating and building [cryo-wiring](https://github.com/cryo-wiring) configurations in CI.
+# cryowire/action
+
+GitHub Action for validating and building [cryowire](https://github.com/cryowire) configurations in CI.
+
+See **[cryowire.github.io](https://cryowire.github.io/)** for the full project overview.
 
 ## Usage
 
@@ -15,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: cryo-wiring/action@v1
+      - uses: cryowire/action@v1
 ```
 
 This automatically finds all cooldown directories (containing `metadata.yaml` + `control.yaml`) and runs `validate` + `build` on each.
@@ -23,7 +29,7 @@ This automatically finds all cooldown directories (containing `metadata.yaml` + 
 ### Validate only
 
 ```yaml
-- uses: cryo-wiring/action@v1
+- uses: cryowire/action@v1
   with:
     command: validate
 ```
@@ -31,7 +37,7 @@ This automatically finds all cooldown directories (containing `metadata.yaml` + 
 ### Specific directories
 
 ```yaml
-- uses: cryo-wiring/action@v1
+- uses: cryowire/action@v1
   with:
     cooldown-dirs: anemone/2026/cd001 anemone/2026/cd002
 ```
@@ -39,7 +45,7 @@ This automatically finds all cooldown directories (containing `metadata.yaml` + 
 ### Generate diagrams
 
 ```yaml
-- uses: cryo-wiring/action@v1
+- uses: cryowire/action@v1
   with:
     command: diagram
 
@@ -52,7 +58,7 @@ This automatically finds all cooldown directories (containing `metadata.yaml` + 
 ### Pin CLI version
 
 ```yaml
-- uses: cryo-wiring/action@v1
+- uses: cryowire/action@v1
   with:
     cli-version: ">=0.1.0,<0.2.0"
 ```
@@ -64,7 +70,7 @@ This automatically finds all cooldown directories (containing `metadata.yaml` + 
 | `command` | `all` | `validate`, `build`, `diagram`, or `all` (validate + build) |
 | `cooldown-dirs` | *(auto-discover)* | Space-separated cooldown directory paths |
 | `diagram-output` | `wiring.svg` | Output filename for diagram command |
-| `cli-version` | *(latest)* | Version constraint for cryo-wiring-cli |
+| `cli-version` | *(latest)* | Version constraint for cryowire-cli |
 | `python-version` | `3.11` | Python version |
 
 ## Outputs
@@ -76,14 +82,14 @@ This automatically finds all cooldown directories (containing `metadata.yaml` + 
 
 ## How it works
 
-1. Sets up Python and installs `cryo-wiring-cli` from PyPI
+1. Sets up Python and installs `cryowire-cli` from PyPI
 2. Discovers cooldown directories by searching for `metadata.yaml` files (or uses explicit paths)
 3. Runs the specified command(s) on each directory
 4. Reports results with exit code 0 (all passed) or 1 (any failed)
 
 ## Adding to your data repository
 
-If you created your data repo from [cryo-wiring/template](https://github.com/cryo-wiring/template), add `.github/workflows/ci.yml`:
+If you created your data repo from [cryowire/template](https://github.com/cryowire/template), add `.github/workflows/ci.yml`:
 
 ```yaml
 name: CI
@@ -94,7 +100,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: cryo-wiring/action@v1
+      - uses: cryowire/action@v1
 ```
 
 This validates every cooldown on every push and pull request.
