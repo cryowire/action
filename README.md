@@ -1,12 +1,12 @@
-<a href="https://github.com/cryowire">
-  <img src="https://raw.githubusercontent.com/cryowire/artwork/main/logo-type/logotype.png" alt="cryowire" width="400" />
-</a>
+<p align="center"><a href="https://github.com/cryowire">
+  <img src="https://raw.githubusercontent.com/cryowire/artwork/main/logo-type/logotype.png" alt="cryowire" width="600" />
+</a></p>
 
-# cryowire/action
-
-GitHub Action for validating and building [cryowire](https://github.com/cryowire) configurations in CI.
-
-See **[cryowire.github.io](https://cryowire.github.io/)** for the full project overview.
+<h1 align="center">cryowire/action</h1>
+<p align="center">GitHub Action for validating and building <a href="https://github.com/cryowire">cryowire</a> configurations in CI.</p>
+<p align="center">
+  <a href="https://cryowire.github.io/"><img src="https://img.shields.io/badge/Website-cryowire.github.io-38bdf8?style=for-the-badge" alt="Website" /></a>
+</p>
 
 ## Usage
 
