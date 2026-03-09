@@ -1,0 +1,22 @@
+name: Test Action
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run action (explicit dir)
+        uses: ./
+        with:
+          cooldown-dirs: test/fixtures/sample-cryo/2026/cd001
+
+      - name: Run action (auto-discover)
+        uses: ./
+        with:
+          command: validate

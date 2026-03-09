@@ -1,0 +1,62 @@
+name: "Cryo-Wiring CI"
+description: "Validate, build, and generate diagrams for cryo-wiring configurations"
+branding:
+  icon: "check-circle"
+  color: "blue"
+
+inputs:
+  command:
+    description: "Command to run: validate, build, diagram, or all"
+    required: false
+    default: "all"
+  cooldown-dirs:
+    description: "Space-separated cooldown directories. Leave empty to auto-discover."
+    required: false
+    default: ""
+  diagram-output:
+    description: "Diagram output filename (used with diagram command)"
+    required: false
+    default: "wiring.svg"
+  cli-version:
+    description: "cryo-wiring-cli version constraint (e.g. '>=0.1.0')"
+    required: false
+    default: ""
+  python-version:
+    description: "Python version to use"
+    required: false
+    default: "3.11"
+
+outputs:
+  cooldown-dirs:
+    description: "Newline-separated list of discovered/processed cooldown directories"
+    value: ${{ steps.run.outputs.cooldown-dirs }}
+  passed:
+    description: "'true' if all commands succeeded"
+    value: ${{ steps.run.outputs.passed }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install cryo-wiring-cli
+      shell: bash
+      run: |
+        pip install --quiet --upgrade pip
+        if [ -n "${{ inputs.cli-version }}" ]; then
+          pip install --quiet "cryo-wiring-cli${{ inputs.cli-version }}"
+        else
+          pip install --quiet cryo-wiring-cli
+        fi
+
+    - name: Run cryo-wiring
+      id: run
+      shell: bash
+      env:
+        INPUT_COMMAND: ${{ inputs.command }}
+        INPUT_COOLDOWN_DIRS: ${{ inputs.cooldown-dirs }}
+        INPUT_DIAGRAM_OUTPUT: ${{ inputs.diagram-output }}
+      run: python "${{ github.action_path }}/main.py"
