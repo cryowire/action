@@ -18,7 +18,7 @@ inputs:
     required: false
     default: "wiring.svg"
   cli-version:
-    description: "cryowire-cli version constraint (e.g. '>=0.1.0')"
+    description: "cryowire version constraint (e.g. '>=0.1.0')"
     required: false
     default: ""
   python-version:
@@ -42,14 +42,14 @@ runs:
       with:
         python-version: ${{ inputs.python-version }}
 
-    - name: Install cryowire-cli
+    - name: Install cryowire
       shell: bash
       run: |
         pip install --quiet --upgrade pip
         if [ -n "${{ inputs.cli-version }}" ]; then
-          pip install --quiet "cryowire-cli${{ inputs.cli-version }}"
+          pip install --quiet "cryowire${{ inputs.cli-version }}"
         else
-          pip install --quiet cryowire-cli
+          pip install --quiet cryowire
         fi
 
     - name: Run cryowire

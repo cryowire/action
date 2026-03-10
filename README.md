@@ -70,7 +70,7 @@ This automatically finds all cooldown directories (containing `metadata.yaml` + 
 | `command` | `all` | `validate`, `build`, `diagram`, or `all` (validate + build) |
 | `cooldown-dirs` | *(auto-discover)* | Space-separated cooldown directory paths |
 | `diagram-output` | `wiring.svg` | Output filename for diagram command |
-| `cli-version` | *(latest)* | Version constraint for cryowire-cli |
+| `cli-version` | *(latest)* | Version constraint for cryowire |
 | `python-version` | `3.11` | Python version |
 
 ## Outputs
@@ -82,7 +82,7 @@ This automatically finds all cooldown directories (containing `metadata.yaml` + 
 
 ## How it works
 
-1. Sets up Python and installs `cryowire-cli` from PyPI
+1. Sets up Python and installs `cryowire` from PyPI
 2. Discovers cooldown directories by searching for `metadata.yaml` files (or uses explicit paths)
 3. Runs the specified command(s) on each directory
 4. Reports results with exit code 0 (all passed) or 1 (any failed)
