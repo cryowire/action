@@ -39,7 +39,7 @@ This automatically finds all cooldown directories (containing `metadata.yaml` + 
 ```yaml
 - uses: cryowire/action@v1
   with:
-    cooldown-dirs: anemone/2026/cd001 anemone/2026/cd002
+    cooldown-dirs: your-cryo/2026/cd001 your-cryo/2026/cd002
 ```
 
 ### Generate diagrams
